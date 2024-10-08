@@ -1,0 +1,61 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "title": "Mango",
+        "description": "Very healthy",
+        "price": 180,
+        "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+        "quantity" : 1
+      },
+      {
+        "id": 2,
+        "title": "Watermelon",
+        "description": "Very healthy",
+        "price": 180,
+        "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+        "quantity" : 1
+      },
+      {
+        "id": 3,
+        "title": "WoodApple",
+        "description": "Very healthy",
+        "price": 180,
+        "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+        "quantity" : 1
+      },
+      {
+        "id": 4,
+        "title": "Papaya",
+        "description": "Very healthy",
+        "price": 150,
+        "thumbnail": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg",
+        "quantity" : 1
+      },
+      {
+        "id": 5,
+        "title": "Grape",
+        "description": "Very healthy.",
+        "price": 300,
+        "thumbnail": "https://cdn.dummyjson.com/product-images/5/thumbnail.jpg",
+        "quantity" : 1
+      },
+      {
+        "id": 6,
+        "title": "Orange",
+        "description": "Very healthy",
+        "price": 150,
+        "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.png",
+        "quantity" : 1
+      },
+      {
+        "id": 7,
+        "title": "Lime",
+        "description": "Very healthy",
+        "price": 120,
+        "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+        "quantity" : 1
+      }
+    ]
+  }
+  
