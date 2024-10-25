@@ -7,21 +7,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 
-public class OrderDTO {
+public class OrderItemsDTO {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long cart_items;
     private Long cart_id;
-    private LocalDate create_date;
-    private LocalTime create_time;
-    private double full_total;
-    private int status;
-    private Long id;
-    private String u_email;
+    private List<ProductDTO> selectedProducts;
+    private String item_name;
+    private double item_price;
 
 }
