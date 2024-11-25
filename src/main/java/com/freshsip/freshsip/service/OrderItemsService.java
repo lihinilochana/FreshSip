@@ -2,9 +2,10 @@ package com.freshsip.freshsip.service;
 
 import com.freshsip.freshsip.dto.OrderItemsDTO;
 import com.freshsip.freshsip.dto.ProductDTO;
+import com.freshsip.freshsip.entity.Items;
 import com.freshsip.freshsip.entity.Order;
 import com.freshsip.freshsip.entity.OrderItems;
-import com.freshsip.freshsip.repository.ItemsRepository;
+import com.freshsip.freshsip.repository.ItemRepo;
 import com.freshsip.freshsip.repository.OrderItemsRepository;
 import com.freshsip.freshsip.repository.OrderRepository;
 import jakarta.transaction.Transactional;
@@ -29,7 +30,7 @@ public class OrderItemsService implements OrderItemsServiceImpl{
     private OrderRepository orderRepository;
 
     @Autowired
-    private ItemsRepository itemsRepository;
+    private ItemRepo itemsRepository;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -47,7 +48,7 @@ public class OrderItemsService implements OrderItemsServiceImpl{
 
     for (ProductDTO product : selectedProducts) {
 
-        com.freshsip.freshsip.entity.Items items = itemsRepository.findById(product.getId())
+        Items items = itemsRepository.findById(product.getId())
                 .orElseThrow(() -> new RuntimeException("Item not found"));
 
 
@@ -112,7 +113,7 @@ public class OrderItemsService implements OrderItemsServiceImpl{
 
         for (ProductDTO product : selectedProducts) {
 
-            com.freshsip.freshsip.entity.Items items = itemsRepository.findById(product.getId())
+            Items items = itemsRepository.findById(product.getId())
                     .orElseThrow(() -> new RuntimeException("Item not found"));
 
 

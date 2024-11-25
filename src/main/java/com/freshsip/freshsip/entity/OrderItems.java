@@ -22,7 +22,7 @@ public class OrderItems {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "item_id", referencedColumnName = "item_id",nullable = false)
+    @JoinColumn(name = "item_id", referencedColumnName = "item_id",nullable = false )
     private Items items;
 
     private double price;

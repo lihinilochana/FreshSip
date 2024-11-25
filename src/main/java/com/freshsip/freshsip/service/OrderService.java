@@ -27,7 +27,7 @@ public class OrderService implements OrderServiceImpl {
 @Override
 public OrderDTO saveOrder(OrderDTO orderDTO) {
 
-    User user = userRepository.findByEmail(orderDTO.getU_email());
+    User user = userRepository.findByEmails(orderDTO.getU_email());
 
     Order order = modelMapper.map(orderDTO, Order.class);
 
@@ -75,4 +75,5 @@ public OrderDTO saveOrder(OrderDTO orderDTO) {
         Order order=orderRepository.getCartById(cart_id);
         return modelMapper.map(order,OrderDTO.class);
     }
+
 }

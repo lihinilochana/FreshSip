@@ -21,7 +21,7 @@ public class OrderDTO {
     private LocalTime create_time;
     private double full_total;
     private int status;
-    private Long id;
+    private Long userId;
     private String u_email;
 
 }

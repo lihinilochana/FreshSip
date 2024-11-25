@@ -24,7 +24,7 @@ public class Order {
     private int status;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", referencedColumnName = "id",nullable = false)
+    @JoinColumn(name = "userId", referencedColumnName = "userId",nullable = false)
     private User user;
 
     private String u_email;

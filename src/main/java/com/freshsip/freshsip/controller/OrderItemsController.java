@@ -18,14 +18,15 @@ import java.util.List;
 @RequestMapping(value = "FreshSip/Order")
 @CrossOrigin
 public class OrderItemsController {
+
     @Autowired
     private OrderItemsService orderItemsService;
-    @GetMapping("/getOrdersItems")
+    @GetMapping(value="/OrdersItems", produces = "application/json")
     public List<OrderItemsDTO> getOrderItems(){
 
         return orderItemsService.getAllOrderItems();
     }
-    @PostMapping("/submitOrder")
+    @PostMapping(value="/adminUser/OrderItems", produces = "application/json")
     public ResponseEntity<String> submitOrder(@RequestBody OrderItemsDTO orderItemsDTO) {
         try {
             orderItemsService.saveOrder(orderItemsDTO);
@@ -37,18 +38,18 @@ public class OrderItemsController {
     }
 
 
-    @DeleteMapping("/deleteOrderByOrderID/{cart_id}")
+    @DeleteMapping(value="/adminUser/OrderItemsByOrderItemsID/{cart_id}", produces = "application/json")
     public void deleteOrderByOrderID(@Valid @PathVariable Long cart_id){
         orderItemsService.deleteOrderByOrderID(cart_id);
     }
 
-    @GetMapping("/getOrderLatest/{cart_id}")
+    @GetMapping(value="/OrderItemsLatest/{cart_id}", produces = "application/json")
     public List<OrderItemsDTO> getChannelingByChannelingDate(@PathVariable Long cart_id) {
         return orderItemsService.getChannelingByChannelingDate(cart_id);
     }
 
 
-    @GetMapping("/getOrderByOrderDates/{create_time}")
+    @GetMapping(value="/OrderItemsByOrderItemsTime/{create_time}", produces = "application/json")
     public ResponseEntity<List<OrderItems>> getOrderItemsByOrderDate(
             @PathVariable("create_time")  LocalTime create_time) {
 
@@ -56,7 +57,7 @@ public class OrderItemsController {
         return ResponseEntity.ok(orderItems);
     }
 
-    @GetMapping("/getOrderByOrders/{create_date}")
+    @GetMapping(value="/admin/OrderItemsByOrdersItemsDates/{create_date}", produces = "application/json")
     public ResponseEntity<List<Object[]>> getOrderItemsByOrderDate(
             @PathVariable("create_date") LocalDate create_date) {
 
@@ -64,7 +65,7 @@ public class OrderItemsController {
         return ResponseEntity.ok(orderItems);
     }
 
-    @GetMapping("/getOrderByOrder/{cart_id}")
+    @GetMapping(value="/adminUser/OrderItemsByOrderItems/{cart_id}", produces = "application/json")
     public ResponseEntity<List<OrderItems>> getOrderItemsByOrder(
             @PathVariable("cart_id")  Long cart_id) {
 
@@ -72,7 +73,7 @@ public class OrderItemsController {
         return ResponseEntity.ok(orderItems);
     }
 
-    @PutMapping("/updateOrder/{cart_id}")
+    @PutMapping(value="/adminUser/OrderItemsOrder/{cart_id}", produces = "application/json")
     public ResponseEntity<String> updateOrder(@PathVariable Long cart_id,@RequestBody OrderItemsDTO orderItemsDTO) {
         try {
             orderItemsService.updateOrder(cart_id, orderItemsDTO);
