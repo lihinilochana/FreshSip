@@ -7,16 +7,16 @@ import { useParams, useNavigate } from 'react-router-dom';
 import OrderService from '../Service/OrderService.js';
 
 const Navbar = () => {
-
-  const userID = 'amadakalubowila@gmail.com';
+  const {email}=useParams();
   const navigate = useNavigate();
   const { cart } = useContext(CartContext);
   const [user, setUser] = useState('');
 
+console.log(email)
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/FreshSip/Order/getUserByEmail/${userID}`);
+        const response = await fetch(`http://localhost:8080/FreshSip/adminUser/${email}`);
         if (!response.ok) {
           throw new Error('Failed to fetch cart');
         }
@@ -29,7 +29,7 @@ const Navbar = () => {
     };
 
     fetchCart();
-  }, [userID]);
+  }, [email]);
   console.log(user)
 
   const handleSubmit = async (event) => {
@@ -39,18 +39,18 @@ const Navbar = () => {
     const currentdate = new Date().toISOString().split('T')[0];
 
     const cartData = {
-      id: user.id,
+      id: user.user_id,
       create_date: currentdate,
       create_time: currenttime,
       full_total: 0.00,
       status: 0,
-      u_email: userID
+      u_email: email
     };
     console.log('Submitting Channeling Data:', cartData);
 
     OrderService.submitCart(cartData)
       .then(() => {
-        navigate("/cart");
+        navigate(`/cart/${email}`);
         console.log(cartData);
       })
       .catch((error) => {
@@ -60,15 +60,14 @@ const Navbar = () => {
   };
 
   return (
-    <div className="d-flex justify-content-between py-3 px-5  text-white nav1">
+    <div className="d-flex justify-content-between py-3 px-5  text-black nav1">
       <Link to="/" className="navbar-brand fs-4 fw-bolder">FreshSip</Link>
       <div className="d-flex ">
-        <Link to="/" className="navbar-link fs-5 text-white text-decoration-none ms-3"  >Home</Link>
-        <Link className="navbar-link fs-5 text-white text-decoration-none ms-3" >About Us</Link>
-        <Link className="navbar-link fs-5 text-white text-decoration-none ms-3" >Review</Link>
-        <Link className="navbar-link fs-5 text-white text-decoration-none ms-3" >Profile</Link>
-        <Link to="/OrderAdminPage" className="navbar-link fs-5 text-white text-decoration-none ms-3" >Admin</Link>
-        <Link to="/cart" className="navbar-link fs-5 text-white text-decoration-none ms-3" onClick={handleSubmit}>
+        <Link to={`/${email}`} className="navbar-link fs-5 text-black text-decoration-none ms-3"  >Home</Link>
+        <Link to={`/About/${email}`} className="navbar-link fs-5 text-black text-decoration-none ms-3" >About Us</Link>
+        <Link to={`/Reviewuser/${email}`} className="navbar-link fs-5 text-black text-decoration-none ms-3" >Review</Link>
+        <Link to={`/Profile/${email}`} className="navbar-link fs-5 text-black text-decoration-none ms-3" >Profile</Link>
+        <Link className="navbar-link fs-5 text-black text-decoration-none ms-3" onClick={handleSubmit}>
           <BsCart />{cart.length}
         </Link>
       </div>
